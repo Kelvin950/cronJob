@@ -6,8 +6,8 @@ const userSchema =  new mongoose.Schema({
 
 
     name:String  , 
-    password:String   ,
 
+  email:{type:String , unique:true}
 
 } , {
     timestamps:true , toJSON:{
