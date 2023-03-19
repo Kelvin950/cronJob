@@ -1,6 +1,6 @@
 const mongoose  =  require("mongoose"); 
 const User = require("./user");
-
+const moment = require("moment")
 
 const eventSchema =  new mongoose.Schema({
 
@@ -13,6 +13,25 @@ const eventSchema =  new mongoose.Schema({
     timestamps:true , 
 })
 
+eventSchema.method("check" , function(date){
+    const diff= moment(this.date).diff(moment(date) ) ; 
+   
+    
+    return Math.round(moment.duration(diff).asMinutes()) === 0 ;
+}) 
+
+
+eventSchema.static("sendNotif" , async function(){
+
+  const events =  await Events.find()  ; 
+const date =  new Date()
+  return   events.filter((e)=>{
+
+        return e.check(date) ; 
+    })
+
+
+})
 
 
 

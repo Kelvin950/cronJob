@@ -9,9 +9,9 @@ exports.createUser =  async(req, res)=>{
     const  {name , email} =  req.body ; 
 
 
-    const EmailAvailable = await findOne({email}) ; 
+    const EmailAvailable = await User.findOne({email}) ; 
     
-    if(!EmailAvailable){
+    if(EmailAvailable){
     throw new Error("Email is not available"); 
 
     } 
