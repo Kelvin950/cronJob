@@ -1,18 +1,47 @@
 const moment =  require("moment") ; 
 const cron =  require("node-cron");
-var day = moment();
+// const  now = moment();
 
-const nextMonth =  day.clone().add(2, "minute") ; 
+const thirtyminFromNow =  moment().add(30 ,"minutes") ; 
 
-const daysBetween  =  nextMonth.diff(day); 
-const dur = moment.duration(daysBetween);
-console.log(nextMonth)
-console.log(daysBetween);
-console.log(dur.asSeconds())
+console.log(thirtyminFromNow) 
+// const dif =   thirtyminFromNow.diff(moment()) ; 
+
+// console.log(dif)
+
+// const dur =  moment.duration(dif);
+
+// console.log(dur.asSeconds())
 
 
-console.log(cron.validate("* * * * * *"))
+
+// const daysBetween  =  nextMonth.diff(day); 
+// const dur = moment.duration(daysBetween);
+// console.log(nextMonth)
+// console.log(daysBetween);
+// console.log(dur.asSeconds())
+
+function calc(date){
+
+const value =  moment(date) ; 
+const now = moment(new Date()); ; 
+ 
+
+const diff=  value.diff(now) ; 
+ 
+const dur =  moment.duration(diff) ; 
+
+if(dur.asMinutes() <=0){
+    console.log("30 minutes is up");
+}
+console.log(dur.asMinutes()) ; 
+ 
+ 
+
+}
+
+// console.log(cron.validate("* * * * * *"))
 
 cron.schedule("* * * * * *", function () {
-  console.log("hello");
+  calc(thirtyminFromNow)
 });
