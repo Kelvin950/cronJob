@@ -16,21 +16,27 @@ const eventSchema =  new mongoose.Schema({
 eventSchema.method("check" , function(date){
     const diff= moment(this.date).diff(moment(date) ) ; 
    
-    
-    return moment.duration(diff).asSeconds() === 0 ;
+    if (Math.floor(moment.duration(diff).asSeconds()) === 0){
+        Math.floor(moment.duration(diff).asSeconds());
+        console.log(true)
+        
+    }
+      return Math.floor(moment.duration(diff).asSeconds()) === 0;
 }) 
 
 
 eventSchema.static("sendNotif" , async function(){
 
-  const events =  await Events.find()  ; 
+  let events =  await Events.find()  ; 
 const date =  new Date()
-  return  events.filter((e)=>{
+  events=  events.filter((e)=>{
 
         return e.check(date) ; 
     })
 
-
+ if(events.length){
+    console.log("fd")
+ }
 })
 
 
