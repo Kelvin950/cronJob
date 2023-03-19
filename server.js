@@ -1,9 +1,11 @@
 const moment =  require("moment") ; 
 
-var day = moment("2023-3-19" , "YYYY-MM-DD");
+var day = moment();
 
-const nextMonth =  day.clone().add(1, "month") ; 
+const nextMonth =  day.clone().add(2, "minute") ; 
 
-const daysBetween  =  nextMonth.diff(day, "days"); 
+const daysBetween  =  nextMonth.diff(day); 
+const dur = moment.duration(daysBetween);
 console.log(nextMonth)
 console.log(daysBetween);
+console.log(dur.asMinutes())
