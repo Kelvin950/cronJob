@@ -17,7 +17,7 @@ eventSchema.method("check" , function(date){
     const diff= moment(this.date).diff(moment(date) ) ; 
    
     
-    return Math.round(moment.duration(diff).asMinutes()) === 0 ;
+    return moment.duration(diff).asSeconds() === 0 ;
 }) 
 
 
@@ -25,7 +25,7 @@ eventSchema.static("sendNotif" , async function(){
 
   const events =  await Events.find()  ; 
 const date =  new Date()
-  return   events.filter((e)=>{
+  return  events.filter((e)=>{
 
         return e.check(date) ; 
     })

@@ -5,8 +5,8 @@ const Router=  require("express").Router()  ;
 
 Router.route("/api/events")
 .post(eventController.createEvent) 
-.get(eventController.getEvents) ; 
-
+.get(eventController.getEvents) 
+.delete(eventController.deleteAll)
 
 Router.route("/api/events/:id")
 .get(eventController.getEvent) ; 

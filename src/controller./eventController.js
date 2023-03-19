@@ -60,3 +60,14 @@ exports.getEvent=  async(req,res)=>{
  })
 
 }
+
+
+exports.deleteAll =  async(req,res)=>{
+
+  await Events.deleteMany({})
+
+
+  res.send({
+    success:"true"
+  })
+}
