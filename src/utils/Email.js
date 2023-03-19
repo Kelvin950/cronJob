@@ -12,6 +12,6 @@ const msg = {
   html: `<p>${data.notes}</p>`,
 };
 
-await sgMail.send(job.data)
+await sgMail.send(msg)
 
 } ;
