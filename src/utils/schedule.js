@@ -9,6 +9,6 @@ exports.scheduler = ()=>{
  
 
     cron.schedule("* * * * * *" , async function(){
-     console.log(await Events.sendNotif());
-    })
+    await Events.sendNotif();})
+    
 }

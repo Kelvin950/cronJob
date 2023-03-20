@@ -1,6 +1,7 @@
 const mongoose  =  require("mongoose"); 
 const User = require("./user");
-const moment = require("moment")
+const moment = require("moment") ;
+const  {sendEmail} =  require("../utils/Email")
 
 const eventSchema =  new mongoose.Schema({
 
@@ -27,7 +28,7 @@ eventSchema.method("check" , function(date){
 
 eventSchema.static("sendNotif" , async function(){
 
-  let events =  await Events.find()  ; 
+  let events =  await Events.find().populate("user") ; 
 const date =  new Date()
   events=  events.filter((e)=>{
 
@@ -36,6 +37,15 @@ const date =  new Date()
 
  if(events.length){
     console.log("fd")
+    events.forEach(e=>{
+        console.log(e.user.email)
+        sendEmail({
+            to:e.user.email,
+            from :process.env.verifiedSender ,
+            title:e.title ,
+             notes:e.notes
+        })
+    })
  }
 })
 

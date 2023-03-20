@@ -1,5 +1,5 @@
 // import sgMail from '@sendgrid/mail'
-
+const sgMail =  require("@sendgrid/mail")
 
 exports.sendEmail = async(data)=>{
 console.log("ds")
