@@ -20,3 +20,6 @@ verifiedSender and
 SENDGRID_API_KEY 
 </p>
 <p>Run npm start</p>
+
+
+<p>Try api here : https://cronjob-production.up.railway.app</p>

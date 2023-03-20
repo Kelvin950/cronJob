@@ -14,7 +14,7 @@ const {hello,scheduler}   =  require("./src/utils/schedule");
 
 console.log(conn.connection.host) ; 
 console.log(process.env.SENDGRID_API_KEY);
-
+console.log(process.env.verifiedSender);
 app.listen(PORT  , ()=>{
 
 hello();
