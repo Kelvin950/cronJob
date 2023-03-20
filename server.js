@@ -13,7 +13,7 @@ const {hello,scheduler}   =  require("./src/utils/schedule");
     const conn =  await mongoose.connect(process.env.MONGO_URI) ; 
 
 console.log(conn.connection.host) ; 
-
+console.log(process.env.SENDGRID_API_KEY);
 
 app.listen(PORT  , ()=>{
 
