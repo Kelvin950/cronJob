@@ -10,6 +10,7 @@ const Events = require("./models/event");
 app.use(express.json()) ; 
 app.use(userRouter) ;
 app.use(eventRouter);
+app.use(express.static("./public"))
 
  
 
